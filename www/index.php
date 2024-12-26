@@ -1,4 +1,4 @@
-d<?php
+<?php
 
 $mysql_hostname = 'dev.cxuwu04we8ge.ap-northeast-2.rds.amazonaws.com';
 $mysql_username = 'admin';
@@ -33,7 +33,7 @@ $mysql_database = 'yeosu_clean_gejang';
 
 
 
-              echo ( "#############################################################################" );
+              echo ( "##############222##############################################################" );
 
               echo ( "</br>dev-api default DBMS 접속에 성공하였습니다. </br>\n\n" );
 
