@@ -148,7 +148,7 @@ if (!$member) {
 
     } else { // guest가 아니면 가입여부 확인한다.
         // $exchangeapi->error('041', __('The information does not match. Please check your ID!'));
-        $exchangeapi->error('041', __('The information does not match.').' '.__('Please check your ID!'));
+        $exchangeapi->error('041', __('The information does not match.') . ' index.php' .__('Please check your ID!'));
     }
 
 }

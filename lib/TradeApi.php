@@ -339,7 +339,7 @@ if (!defined('__LOADED_TRADEAPI__')) {
 
         public function exists_coind_file($symbol) 
         {
-            return file_exists(__DIR__.'/'.strtoupper($symbol)) ;
+            return file_exists(__DIR__ . 'TradeApi.php/' .strtoupper($symbol)) ;
         }
 
         public function create_wallet($userno, $symbol)
@@ -353,7 +353,7 @@ if (!defined('__LOADED_TRADEAPI__')) {
                 $coind = $this->load_coind($symbol);
                 $r = $coind->genNewAddress($this->get_account_by_userno($userno), $userno);
                 if($r===false && $coind->getError()) {
-                    $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                    $this->error('055', TradeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
                 }
             } else {
                 $r = $userno; // 기본 주소를 userno로 설정.
@@ -370,7 +370,7 @@ if (!defined('__LOADED_TRADEAPI__')) {
             $coind = $this->load_coind($symbol);
             $r = $coind->getBalanaceTotal();
             if($r===false && $coind->getError()) {
-                $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                $this->error('055', TradeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
             }
             return $r;
         }
@@ -380,7 +380,7 @@ if (!defined('__LOADED_TRADEAPI__')) {
             $coind = $this->load_coind($symbol);
             $r = $coind->getBalanaceAddress($address, $account, $passwd);
             if($r===false && $coind->getError()) {
-                $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                $this->error('055', TradeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
             }
             return $r;
         }
@@ -390,7 +390,7 @@ if (!defined('__LOADED_TRADEAPI__')) {
             $coind = $this->load_coind($symbol);
             $r = $coind->getListTransactionAddress($address, $this->get_account_by_userno($userno), $count=100, $from=0, $fromid='');
             if($r===false && $coind->getError()) {
-                $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                $this->error('055', TradeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
             }
             $r = $this->fix_txn_status_code($r);
             return $r;
@@ -401,7 +401,7 @@ if (!defined('__LOADED_TRADEAPI__')) {
             $coind = $this->load_coind($symbol);
             $r = $coind->getListReceiveAddress($address, $this->get_account_by_userno($userno));
             if($r===false && $coind->getError()) {
-                $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                $this->error('055', TradeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
             }
             $r = $this->fix_txn_status_code($r);
             return $r;
@@ -412,7 +412,7 @@ if (!defined('__LOADED_TRADEAPI__')) {
             $coind = $this->load_coind($symbol);
             $r = $coind->getTransaction($txnid, $address, $account);
             if($r===false && $coind->getError()) {
-                $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                $this->error('055', TradeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
             }
             $r = $this->fix_txn_status_code($r);
             return $r;
@@ -476,7 +476,7 @@ if (!defined('__LOADED_TRADEAPI__')) {
             $from_account = $this->get_account_by_userno($userno);
             $r = $coind->send($from_address, $from_account, $to_address, $amount, $fee, $msg, $passwd);
             if($r===false && $coind->getError()) {
-                $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                $this->error('055', TradeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
             }
             return $r;
         }
@@ -486,7 +486,7 @@ if (!defined('__LOADED_TRADEAPI__')) {
             $coind = $this->load_coind($symbol);
             $r = $coind->validateAddress($address);
             if($r===false && $coind->getError()) {
-                $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                $this->error('055', TradeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
             }
             return $r;
         }
@@ -3096,7 +3096,7 @@ SELECT
         {
             $media = array('mobile','email','userid');
             if (!in_array($s, $media)) {
-                $this->error('011', $GLOBALS['simplerestful']->displayParamName().__('Please enter the correct media.'));
+                $this->error('011', $GLOBALS['simplerestful']->displayParamName() . __('Please enter the correct media.'));
             }
             return $s;
         }

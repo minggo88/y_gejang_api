@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'/../../lib/TradeApi.php';
+require __DIR__ . '/../../lib/TradeApi.php';
 
 $social_type = setDefault(loadParam('social_type'), '');
 

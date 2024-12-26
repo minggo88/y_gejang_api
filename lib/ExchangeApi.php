@@ -293,7 +293,7 @@ if (!defined('__LOADED_EXCHANGEAPI__')) {
             $coind = $this->load_coind($symbol);
             $r = $coind->genNewAddress($this->get_account_by_userno($userno), $userno);
             if($r===false && $coind->getError()) {
-                $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                $this->error('055', ExchangeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
             }
             return $r;
         }
@@ -303,7 +303,7 @@ if (!defined('__LOADED_EXCHANGEAPI__')) {
             $coind = $this->load_coind($symbol);
             $r = $coind->getBalanaceTotal();
             if($r===false && $coind->getError()) {
-                $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                $this->error('055', ExchangeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
             }
             return $r;
         }
@@ -313,7 +313,7 @@ if (!defined('__LOADED_EXCHANGEAPI__')) {
             $coind = $this->load_coind($symbol);
             $r = $coind->getBalanaceAddress($address, $account, $passwd);
             if($r===false && $coind->getError()) {
-                $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                $this->error('055', ExchangeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
             }
             return $r;
         }
@@ -323,7 +323,7 @@ if (!defined('__LOADED_EXCHANGEAPI__')) {
             $coind = $this->load_coind($symbol);
             $r = $coind->getListTransactionAddress($address, $this->get_account_by_userno($userno), $count=100, $from=0, $fromid='');
             if($r===false && $coind->getError()) {
-                $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                $this->error('055', ExchangeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
             }
             $r = $this->fix_txn_status_code($r);
             return $r;
@@ -334,7 +334,7 @@ if (!defined('__LOADED_EXCHANGEAPI__')) {
             $coind = $this->load_coind($symbol);
             $r = $coind->getListReceiveAddress($address, $this->get_account_by_userno($userno));
             if($r===false && $coind->getError()) {
-                $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                $this->error('055', ExchangeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
             }
             $r = $this->fix_txn_status_code($r);
             return $r;
@@ -345,7 +345,7 @@ if (!defined('__LOADED_EXCHANGEAPI__')) {
             $coind = $this->load_coind($symbol);
             $r = $coind->getTransaction($txnid, $address, $account);
             if($r===false && $coind->getError()) {
-                $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                $this->error('055', ExchangeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
             }
             $r = $this->fix_txn_status_code($r);
             return $r;
@@ -403,7 +403,7 @@ if (!defined('__LOADED_EXCHANGEAPI__')) {
             $from_account = $this->get_account_by_userno($userno);
             $r = $coind->send($from_address, $from_account, $to_address, $amount, $fee, $msg, $passwd);
             if($r===false && $coind->getError()) {
-                $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                $this->error('055', ExchangeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
             }
             return $r;
         }
@@ -413,7 +413,7 @@ if (!defined('__LOADED_EXCHANGEAPI__')) {
             $coind = $this->load_coind($symbol);
             $r = $coind->validateAddress($address);
             if($r===false && $coind->getError()) {
-                $this->error('055', __('Failed to connect to coin server. details: ').$coind->getError());
+                $this->error('055', ExchangeApi . php__('Failed to connect to coin server. details: ') . $coind->getError());
             }
             return $r;
         }
@@ -680,7 +680,7 @@ if (!defined('__LOADED_EXCHANGEAPI__')) {
             if (!$address) {
                 $coind = $this->load_coind($symbol);
                 $errmsg = $coind->getError();
-                $this->error('014', __('Failed to create new address. ') . $errmsg);
+                $this->error('014', ExchangeApi . php__('Failed to create new address. ') . $errmsg);
             }
             // save address
             $this->save_wallet($userno, $symbol, $address);
@@ -1724,7 +1724,7 @@ if (!defined('__LOADED_EXCHANGEAPI__')) {
         {
             $media = array('mobile','email','userid');
             if (!in_array($s, $media)) {
-                $this->error('011', $GLOBALS['simplerestful']->displayParamName().__('Please enter the correct media.'));
+                $this->error('011', $GLOBALS['simplerestful']->displayParamName() . __('Please enter the correct media.'));
             }
             return $s;
         }
@@ -1733,13 +1733,13 @@ if (!defined('__LOADED_EXCHANGEAPI__')) {
             $s = trim($s);
             $feeaction = array('', 'withdraw', 'receive', 'exchange', 'all'); // out -> withdraw,  in -> receive로 action 명 정정.
             if ( ! in_array($s, $feeaction)) {
-                $this->error('015', $GLOBALS['simplerestful']->displayParamName().__('Please enter the correct action value.'));
+                $this->error('015', $GLOBALS['simplerestful']->displayParamName() . __('Please enter the correct action value.'));
             }
             return $s;
         }
         function checkLoginUser($s) {
             if($s != $this->get_login_userid()) {
-                $this->error('021', $GLOBALS['simplerestful']->displayParamName().__('You can only view your personal information.'));
+                $this->error('021', $GLOBALS['simplerestful']->displayParamName() . __('You can only view your personal information.'));
             }
             return $s;
         }
@@ -1754,7 +1754,7 @@ if (!defined('__LOADED_EXCHANGEAPI__')) {
                 }
             }
             if(!$r) {
-                $this->error('011', $GLOBALS['simplerestful']->displayParamName().__('Please add a country calling code.'));
+                $this->error('011', $GLOBALS['simplerestful']->displayParamName() . __('Please add a country calling code.'));
             }
             return $s;
         }
@@ -1763,7 +1763,7 @@ if (!defined('__LOADED_EXCHANGEAPI__')) {
         {
             $social_names = array('kakao','naver','google','mobile','email','guest','facebook','');
             if(! in_array($s,$social_names)) {
-                $this->error('011', $GLOBALS['simplerestful']->displayParamName().__('Please enter the correct social name.'));
+                $this->error('011', $GLOBALS['simplerestful']->displayParamName() . __('Please enter the correct social name.'));
             }
             return $s;
         }
@@ -1771,7 +1771,7 @@ if (!defined('__LOADED_EXCHANGEAPI__')) {
         function checkPinNumber($s)
         {
             if(strlen($s)!=6) {
-                $this->error('011', $GLOBALS['simplerestful']->displayParamName().__('Please enter 6 numbers for PIN number.'));
+                $this->error('011', $GLOBALS['simplerestful']->displayParamName() . __('Please enter 6 numbers for PIN number.'));
             }
             return $s;
         }
@@ -1780,7 +1780,7 @@ if (!defined('__LOADED_EXCHANGEAPI__')) {
         {
             $share_type = array('send','invite');
             if(! in_array($s,$share_type)) {
-                $this->error('011', $GLOBALS['simplerestful']->displayParamName().__('Please enter the correct share type.'));
+                $this->error('011', $GLOBALS['simplerestful']->displayParamName() . __('Please enter the correct share type.'));
             }
             return $s;
         }
