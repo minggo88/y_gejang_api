@@ -102,7 +102,7 @@ mysqli_close($conn);
 
 */
 
-echo $userid;
+echo json_encode($userid);
 
 
 
