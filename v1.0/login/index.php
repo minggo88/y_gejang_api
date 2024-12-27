@@ -12,8 +12,8 @@ session_start();
 // validate parameters
 $userid = checkEmpty($_REQUEST['userid'], 'social_id');
 $userpw = checkEmpty($_REQUEST['userpw'], 'userpw');
-$uuid = checkUUID(checkEmpty($_REQUEST['uuid'], 'UUID'));
-$os = checkEmpty($_REQUEST['os'], 'OS');
+//$uuid = checkUUID(checkEmpty($_REQUEST['uuid'], 'UUID'));
+//$os = checkEmpty($_REQUEST['os'], 'OS');
 
 // --------------------------------------------------------------------------- //
 
@@ -21,7 +21,7 @@ $os = checkEmpty($_REQUEST['os'], 'OS');
 //$tradeapi->set_db_link('slave');
 
 // 계정 정보 확인.
-$member = $tradeapi->get_member_info_by_userid($userid);
+/*$member = $tradeapi->get_member_info_by_userid($userid);
 if(!$member) {
     $tradeapi->error('041', __('The information does not match. Please check your ID!'));
 }
@@ -37,6 +37,6 @@ $_r = $tradeapi->login($member->userno, $member->userid, $member->name, '3');
 if(!$_r) {
     $tradeapi->error('007', __('Login failed.'));
 }
-
+*/
 // response
-$tradeapi->success(array('token'=>session_id()));
+$tradeapi->success(array('succecc'=>$userid));
