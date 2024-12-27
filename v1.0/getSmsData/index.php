@@ -48,6 +48,5 @@ if ($result) {
 }
 
 // 연결 종료
-mysqli_stmt_close($stmt);
 mysqli_close($conn);
 ?>
