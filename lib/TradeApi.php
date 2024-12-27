@@ -1,6 +1,6 @@
 <?php
 
-
+include dirname(__file__) . "/../../lib/config.php";
 /**
  *
  */
