@@ -20,6 +20,8 @@ $userpw = checkEmpty($_REQUEST['userpw'], 'userpw');
 // 마스터 디비 사용하도록 설정.
 //$tradeapi->set_db_link('slave');
 
+
+/*
 $mysql_hostname = 'dev.cxuwu04we8ge.ap-northeast-2.rds.amazonaws.com';
 $mysql_username = 'admin';
 $mysql_password = 'a2633218*';
@@ -33,6 +35,15 @@ date_default_timezone_set('Asia/Seoul');
 $conn = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database, "3306");
 $query = "SELECT * FROM js_test_manager;";
 $result = mysqli_query($conn, $query);
+
+
+*/
+
+
+
+
+
+
 
 // 계정 정보 확인.
 /*$member = $tradeapi->get_member_info_by_userid($userid);
@@ -55,6 +66,10 @@ if(!$_r) {
 // response
 //$tradeapi->success($result);
 
+
+
+
+/*
 if (!$result) {
     http_response_code(500);
     echo json_encode(["error" => "SQL execution failed: " . mysqli_error($conn)]);
@@ -80,5 +95,12 @@ echo json_encode($response);
 // 연결 해제
 mysqli_free_result($result);
 mysqli_close($conn);
+
+*/
+
+echo $userid;
+
+
+
 
 ?>
