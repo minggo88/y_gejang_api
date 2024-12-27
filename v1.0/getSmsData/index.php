@@ -46,3 +46,8 @@ if ($result) {
     // 사용자 인증 실패
     echo json_encode(["success" => false, "error" => "Invalid credentials."]);
 }
+
+// 연결 종료
+mysqli_stmt_close($stmt);
+mysqli_close($conn);
+?>
