@@ -24,7 +24,7 @@ $sql = " INSERT INTO `kkikda`.`js_test_sms` (`call`, `tvalue`) VALUES ('$mobile'
 
 $result = mysqli_query($conn, $query);
 
-if (!$result) {
+/*if (!$res0ult) {
 	echo json_encode(["success" => false, "error" => "Invalid credentials.".mysqli_error($conn)]);
 } else {
 	
@@ -36,7 +36,8 @@ if (!$result) {
 		
 	}
 	
-}
+}*/
+echo json_encode(["success" => true, "payload" => [$result]);
 
 // response
 //$exchangeapi->success(array('token'=>"success",'my_wallet_no'=>$mobile,'userno'=>$text));
