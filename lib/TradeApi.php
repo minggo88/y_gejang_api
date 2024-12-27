@@ -97,7 +97,8 @@ if (!defined('__LOADED_TRADEAPI__')) {
             // $query['tool'] = 'row';
             // $query['fields'] = 'userno,userid,userpw,name,level_code,bank_account';
             // $query['fields'].= ',bool_confirm_email,bool_confirm_mobile,bool_confirm_idimage,bool_email_krw_input,bool_sms_krw_input,bool_email_krw_output,bool_sms_krw_output,bool_email_btc_trade,bool_email_btc_input,bool_email_btc_output';
-            $sql = " select * from js_member where userid='{$this->escape($userid)}'  ";
+            $sql = " SELECT m_index AS userno, m_id AS userid, m_password AS userpw, m_name AS NAME
+	                FROM js_test_manager WHERE m_id = ='{$this->escape($userid)}'  ";
             $row = $this->query_fetch_array($sql);
             if($row['userno']!=$userno) {
                 return false;
@@ -106,36 +107,7 @@ if (!defined('__LOADED_TRADEAPI__')) {
             $_SESSION['USER_NO'] = $userno;
             $_SESSION['USER_ID'] = $userid;
             $_SESSION['USER_NAME'] = $name;
-            $_SESSION['USER_LEVEL'] = $level_code;
-
-            // SCC Account 여부
-            $sql = "select count(*) from js_exchange_wallet where userno='{$this->escape($userno)}' and symbol='SCC' ";
-            $scc_cnt = $this->query_one($sql);
-            if($scc_cnt > 0) {
-                $_SESSION['SCC_ACCOUNT'] = $scc_cnt;
-            } else {
-                $_SESSION['SCC_ACCOUNT'] = '0';
-            }
-
-            // 본인인증여부
-            $query = "select * from js_member where userid='".$this->escape($userid)."' ";
-            $_realname_info = $this->query_fetch_array($query);
-            if( !empty($_realname_info) && $_realname_info['bool_realname'] != '0' ) {
-                $_SESSION['USER_REALNAME'] = '1';
-                $_SESSION['USER_GENDER'] = $_realname_info['gender'];
-                $_SESSION['USER_BIRTHDATE'] = $_realname_info['birthdate'];
-            } else {
-                $_SESSION['USER_REALNAME'] = '0';
-            }
-            $_SESSION['bool_confirm_email'] = $row['bool_confirm_email'];
-            $_SESSION['bool_confirm_mobile'] = $row['bool_confirm_mobile'];
-            $_SESSION['bool_email_krw_input'] = $row['bool_email_krw_input'];
-            $_SESSION['bool_sms_krw_input'] = $row['bool_sms_krw_input'];
-            $_SESSION['bool_email_krw_output'] = $row['bool_email_krw_output'];
-            $_SESSION['bool_sms_krw_output'] = $row['bool_sms_krw_output'];
-            $_SESSION['bool_email_btc_trade'] = $row['bool_email_btc_trade'];
-            $_SESSION['bool_email_btc_input'] = $row['bool_email_btc_input'];
-            $_SESSION['bool_email_btc_output'] = $row['bool_email_btc_output'];
+         
 
             return $_SESSION['USER_NO'] ? true : false;
         }
@@ -2693,7 +2665,8 @@ SELECT
         }
 
         function get_member_info_by_userid ($userid) {
-            $sql = " SELECT userno, userid, userpw, name, nickname, phone, mobile, email, bool_email, bool_sms, bool_lunar, birthday, level_code, regdate, otpkey, bool_confirm_email, bool_confirm_mobile, bool_realname, image_identify_url, image_mix_url, gender, pin FROM js_member WHERE userid = '".$this->escape($userid)."' ";
+            $sql = " SELECT m_index AS userno, m_id AS userid, m_password AS userpw, m_name AS name, m_call AS phone, m_use, m_master 
+                    	FROM js_test_manager WHERE m_id = '".$this->escape($userid)."' ";
             return $this->query_fetch_object($sql);
         }
 

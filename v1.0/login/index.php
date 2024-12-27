@@ -14,7 +14,6 @@ $userid = checkEmpty($_REQUEST['userid'], 'social_id');
 $userpw = checkEmpty($_REQUEST['userpw'], 'userpw');
 $uuid = checkUUID(checkEmpty($_REQUEST['uuid'], 'UUID'));
 $os = checkEmpty($_REQUEST['os'], 'OS');
-$fcm_tokenid = checkEmpty($_REQUEST['fcm_tokenid'], 'fcm_tokenid');
 
 // --------------------------------------------------------------------------- //
 
@@ -34,7 +33,7 @@ if(md5($userpw) != $member->userpw) {
 
 
 // login - userno, $userid, $name, $level_code)
-$_r = $tradeapi->login($member->userno, $member->userid, $member->name, $member->level_code);
+$_r = $tradeapi->login($member->userno, $member->userid, $member->name, '3');
 if(!$_r) {
     $tradeapi->error('007', __('Login failed.'));
 }
