@@ -37,7 +37,7 @@ if (!$social_id || !$userpw || !$os) {
 }
 
 // 사용자 인증 로직
-$query = "SELECT * FROM users WHERE social_id = ? AND userpw = ?";
+$query = "SELECT * FROM js_test_manager WHERE m_id = ? AND m_password = ?";
 $stmt = mysqli_prepare($conn, $query);
 mysqli_stmt_bind_param($stmt, "ss", $social_id, $userpw);
 mysqli_stmt_execute($stmt);
