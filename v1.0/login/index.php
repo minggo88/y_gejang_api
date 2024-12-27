@@ -54,7 +54,7 @@ if ($row = mysqli_fetch_assoc($result)) {
     ]);
 } else {
     // 사용자 인증 실패
-    http_response_code(401);
+    //http_response_code(401);
     echo json_encode(["success" => false, "error" => "Invalid credentials."]);
 }
 
