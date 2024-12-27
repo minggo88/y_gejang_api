@@ -49,7 +49,7 @@ if ($row = mysqli_fetch_assoc($result)) {
     echo json_encode([
         "success" => true,
         "payload" => [
-            "user_id" => $row['id']
+            "user_id" => $row['m_id']
         ],
     ]);
 } else {
