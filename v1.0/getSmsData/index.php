@@ -27,7 +27,7 @@ $sql = " SELECT
 			sms_index DESC";
 
 
-$result = mysqli_query($conn, $query);
+$result = mysqli_query($conn, $sql);
 
 if ($result) {
     $data = []; // 결과를 담을 배열 초기화
