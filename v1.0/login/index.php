@@ -9,7 +9,7 @@ $os = isset($request['os']) ? $request['os'] : null;
 
 // 필수 값 확인
 if (!$social_id || !$userpw || !$os) {
-    http_response_code(400);
+    //http_response_code(400);
     echo json_encode(["success" => false, "error" => "Missing required parameters."]);
     exit;
 }
