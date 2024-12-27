@@ -18,7 +18,7 @@ $os = checkEmpty($_REQUEST['os'], 'OS');
 // --------------------------------------------------------------------------- //
 
 // 마스터 디비 사용하도록 설정.
-$tradeapi->set_db_link('slave');
+//$tradeapi->set_db_link('slave');
 
 // 계정 정보 확인.
 $member = $tradeapi->get_member_info_by_userid($userid);
