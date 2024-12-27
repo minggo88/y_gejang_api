@@ -1,5 +1,5 @@
 <?php
-include dirname(__file__) . "/../../lib/TradeApi.php";
+//include dirname(__file__) . "/../../lib/TradeApi.php";
 
 // 거래소 api는 토큰을 전달 받을때만 작동하도록 되어 있어서 로그인시 token을 생성해 줍니다.
 //$tradeapi->token = session_create_id();
@@ -20,6 +20,20 @@ $userpw = checkEmpty($_REQUEST['userpw'], 'userpw');
 // 마스터 디비 사용하도록 설정.
 //$tradeapi->set_db_link('slave');
 
+$mysql_hostname = 'dev.cxuwu04we8ge.ap-northeast-2.rds.amazonaws.com';
+$mysql_username = 'admin';
+$mysql_password = 'a2633218*';
+$mysql_database = 'yeosu_clean_gejang';
+
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
+date_default_timezone_set('Asia/Seoul');
+
+$conn = mysqli_connect($mysql_hostname, $mysql_username, $mysql_password, $mysql_database, "3306");
+$query = "SELECT * FROM js_test_manager;";
+$result = mysqli_query($conn, $query);
+
 // 계정 정보 확인.
 /*$member = $tradeapi->get_member_info_by_userid($userid);
 if(!$member) {
@@ -39,4 +53,32 @@ if(!$_r) {
 }
 */
 // response
-$tradeapi->success(array('succecc'=>$userid));
+//$tradeapi->success($result);
+
+if (!$result) {
+    http_response_code(500);
+    echo json_encode(["error" => "SQL execution failed: " . mysqli_error($conn)]);
+    exit;
+}
+
+// 결과 데이터를 배열로 변환
+$data = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $data[] = $row;
+}
+
+// JSON 응답
+$response = [
+    "userid" => $userid,
+    "userpw" => $userpw,
+    "result" => $data
+];
+
+header("Content-Type: application/json");
+echo json_encode($response);
+
+// 연결 해제
+mysqli_free_result($result);
+mysqli_close($conn);
+
+?>
