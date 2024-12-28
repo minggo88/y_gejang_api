@@ -35,7 +35,7 @@ $exchangeapi->transaction_start();// DB 트랜젝션 시작
 
 // 가입
 
-$sql = " DELETE FROM `kkikda`.`js_test_end_text` 
+$sql = " DELETE FROM `yeosu_clean_gejang`.`js_test_end_text` 
 			WHERE  `endt_index`='$d_index';";
 
 

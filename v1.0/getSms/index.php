@@ -36,7 +36,7 @@ $exchangeapi->transaction_start();// DB 트랜젝션 시작
 
 // 가입
 
-$sql = " INSERT INTO `kkikda`.`js_test_sms` (`call`, `tvalue`) VALUES ('$mobile', '$text') ";
+$sql = " INSERT INTO `yeosu_clean_gejang`.`js_test_sms` (`call`, `tvalue`) VALUES ('$mobile', '$text') ";
 $exchangeapi->query($sql);
 
 

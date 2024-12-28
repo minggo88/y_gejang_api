@@ -68,13 +68,13 @@ $c_sendtext = setDefault(loadParam('c_sendtext'), '');
 
 // --------------------------------------------------------------------------- //
 
-$sql = " UPDATE `kkikda`.`js_test_order` 
+$sql = " UPDATE `yeosu_clean_gejang`.`js_test_order` 
 			SET `complete`='Y', 'complete_manager' = '1'
 			WHERE  `sms_index`='$c_index';";
 
 $u_data = $tradeapi->query_list_object($sql);
 /*
-$sql2 = " INSERT INTO `kkikda`.`js_test_order` (`call`, `order_item`, `order_num`, `address`, `order_manager`) 
+$sql2 = " INSERT INTO `yeosu_clean_gejang`.`js_test_order` (`call`, `order_item`, `order_num`, `address`, `order_manager`) 
 			VALUES ('$c_call', '$c_order', $c_ordernum, '$c_address1', '1');
 		";
 

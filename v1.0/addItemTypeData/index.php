@@ -8,7 +8,7 @@ $u_text = setDefault(loadParam('up_text'), '');
 
 // 가입
 
-$sql = " INSERT INTO `kkikda`.`js_test_item_type` (`itype_name`) 
+$sql = " INSERT INTO `yeosu_clean_gejang`.`js_test_item_type` (`itype_name`) 
 		VALUES ('$u_text');";
 
 // SQL 실행

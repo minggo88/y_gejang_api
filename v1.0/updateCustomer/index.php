@@ -27,7 +27,7 @@ $c_address2 = setDefault(loadParam('up_address2'), '');
 
 // 가입
 
-$sql = " UPDATE `kkikda`.`js_test_customer` 
+$sql = " UPDATE `yeosu_clean_gejang`.`js_test_customer` 
 			SET `c_name`='$c_name', `c_call`='$c_call', `c_address1`='$c_address1', `c_address2`='$c_address2' 
 			WHERE  `test_customer_index`='$c_index';";
 

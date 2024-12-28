@@ -36,7 +36,7 @@ $exchangeapi->transaction_start();// DB 트랜젝션 시작
 
 // 가입
 
-$sql = " UPDATE `kkikda`.`js_test_end_text`  
+$sql = " UPDATE `yeosu_clean_gejang`.`js_test_end_text`  
 			SET `endt_text`='$c_text'  
 			WHERE  `endt_index`='$c_index';";
 

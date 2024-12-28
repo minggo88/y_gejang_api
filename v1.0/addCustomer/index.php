@@ -37,7 +37,7 @@ $exchangeapi->transaction_start();// DB 트랜젝션 시작
 
 // 가입
 
-$sql = " INSERT INTO `kkikda`.`js_test_customer` (`c_name`, `c_call`, `c_address1`, `c_address2`) 
+$sql = " INSERT INTO `yeosu_clean_gejang`.`js_test_customer` (`c_name`, `c_call`, `c_address1`, `c_address2`) 
 		VALUES ('$c_name', '$c_call', '$c_address1', '$c_address2');";
 
 $exchangeapi->query($sql);

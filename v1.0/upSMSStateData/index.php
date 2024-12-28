@@ -36,7 +36,7 @@ $exchangeapi->transaction_start();// DB 트랜젝션 시작
 
 // 가입
 
-$sql = " UPDATE `kkikda`.`js_test_sms`  
+$sql = " UPDATE `yeosu_clean_gejang`.`js_test_sms`  
 			SET `complete`='$c_state'  
 			WHERE  `sms_index`='$c_index';";
 

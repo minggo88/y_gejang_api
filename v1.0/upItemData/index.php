@@ -8,7 +8,7 @@ $c_text = setDefault(loadParam('c_text'), '');
 
 // 가입
 
-$sql = " UPDATE `kkikda`.`js_test_item`   
+$sql = " UPDATE `yeosu_clean_gejang`.`js_test_item`   
 			SET `i_value`='$c_text'  
 			WHERE  `item_index`='$c_index'; ";
 

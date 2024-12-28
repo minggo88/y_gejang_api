@@ -35,7 +35,7 @@ $exchangeapi->transaction_start();// DB 트랜젝션 시작
 
 // 가입
 
-$sql = " INSERT INTO `kkikda`.`js_test_end_text` (`endt_text`) 
+$sql = " INSERT INTO `yeosu_clean_gejang`.`js_test_end_text` (`endt_text`) 
 		VALUES ('$u_text');";
 
 $exchangeapi->query($sql);
