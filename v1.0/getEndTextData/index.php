@@ -1,17 +1,6 @@
 <?php
-include dirname(__file__) . "/../../lib/TradeApi.php";
-
-
-// -------------------------------------------------------------------- //
-
-
-// 거래소 api는 토큰을 전달 받을때만 작동하도록 되어 있어서 로그인시 token을 생성해 줍니다.
-$exchangeapi->token = session_create_id();
-session_start();
-session_regenerate_id(); // 로그인할때마다 token 값을 바꿉니다.
-
-// 로그인 세션 확인.
-// $exchangeapi->checkLogout();
+// 공통 설정 포함
+include __DIR__ . "/../../lib/config.php";
 
 $type_num = setDefault(loadParam('type_num'), '');
 // --------------------------------------------------------------------------- //
@@ -26,8 +15,27 @@ $sql = " SELECT endt_index, endt_text
 //$sql .= " AND i_type = '$type_num' ";
 $sql .= " ORDER BY endt_text ASC;";
 		
-	
-$text_data = $tradeapi->query_list_object($sql);
 
-$tradeapi->success($text_data);
+$result = mysqli_query($conn, $sql);
 
+if ($result) {
+    $data = []; // 결과를 담을 배열 초기화
+
+    // 결과를 배열에 저장
+    while ($row = mysqli_fetch_assoc($result)) {
+        $data[] = $row; // 각 행을 배열에 추가
+    }
+
+    // 결과 반환
+    echo json_encode([
+        "success" => true,
+        "payload" => $data
+    ]);
+} else {
+    // 사용자 인증 실패
+    echo json_encode(["success" => false, "error" => "Invalid credentials."]);
+}
+
+// 연결 종료
+mysqli_close($conn);
+?>
