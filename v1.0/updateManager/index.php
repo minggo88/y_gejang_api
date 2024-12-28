@@ -1,22 +1,8 @@
 <?php
-include dirname(__file__) . "/../../lib/TradeApi.php";
+// 공통 설정 포함
+include __DIR__ . "/../../lib/config.php";
 
-
-// -------------------------------------------------------------------- //
-
-
-// 거래소 api는 토큰을 전달 받을때만 작동하도록 되어 있어서 로그인시 token을 생성해 줍니다.
-$exchangeapi->token = session_create_id();
-session_start();
-session_regenerate_id(); // 로그인할때마다 token 값을 바꿉니다.
-
-// 로그인 세션 확인.
-// $exchangeapi->checkLogout();
-
-// --------------------------------------------------------------------------- //
-
-// 마스터 디비 사용하도록 설정.
-$tradeapi->set_db_link('slave');
+// 전체데이터 가져오기
 
 $m_index = setDefault(loadParam('up_index'), '');
 $m_id = setDefault(loadParam('up_id'), '');
@@ -31,6 +17,18 @@ $sql = " UPDATE `kkikda`.`js_test_manager`
 			SET `m_name`='$m_name' , `m_call`='$m_call' , `m_id`='$m_id' , `m_password`='$m_password' 
 			WHERE  `m_index`='$m_index';";
 
-$sms_data = $tradeapi->query_list_object($sql);
+$result = mysqli_query($conn, $sql);
 
-$tradeapi->success($sms_data);
+if ($result) {
+    // 결과 반환
+    echo json_encode([
+        "success" => true
+    ]);
+	
+} else {
+    // 사용자 인증 실패
+    echo json_encode(["success" => false, "error" => "Invalid credentials."]);
+}
+
+// 연결 종료
+mysqli_close($conn);
