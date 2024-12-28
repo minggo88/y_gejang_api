@@ -9,7 +9,7 @@ $d_index = setDefault(loadParam('c_index'), '');
 
 // 가입
 
-$sql = " DELETE FROM `kkyeosu_clean_gejangikda`.`js_test_item` 
+$sql = " DELETE FROM `yeosu_clean_gejang`.`js_test_item` 
 			WHERE  `item_index`='$d_index';";
 
 
