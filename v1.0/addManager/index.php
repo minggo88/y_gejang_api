@@ -25,7 +25,7 @@ if ($result) {
 	
 } else {
     // 사용자 인증 실패
-    echo json_encode(["success" => false, "error" => "Invalid credentials."]);
+    echo json_encode(["success" => false, "error" => "Invalid credentials.".$sql]);
 }
 
 // 연결 종료
