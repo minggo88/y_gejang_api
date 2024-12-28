@@ -5,9 +5,6 @@ include __DIR__ . "/../../lib/config.php";
 $type_num = setDefault(loadParam('type_num'), '');
 // --------------------------------------------------------------------------- //
 
-// 마스터 디비 사용하도록 설정.
-$tradeapi->set_db_link('slave');
-
 // 전체데이터 가져오기
 $sql = " SELECT endt_index, endt_text 
 	FROM js_test_end_text 
