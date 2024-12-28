@@ -13,7 +13,7 @@ $m_call = setDefault(loadParam('up_call'), '');
 
 // 가입
 
-$sql = " UPDATE `kkikda`.`js_test_manager` 
+$sql = " UPDATE `yeosu_clean_gejang`.`js_test_manager` 
 			SET `m_name`='$m_name' , `m_call`='$m_call' , `m_id`='$m_id' , `m_password`='$m_password' 
 			WHERE  `m_index`='$m_index';";
 

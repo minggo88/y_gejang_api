@@ -11,7 +11,7 @@ $m_use = setDefault(loadParam('add_use'), '');
 
 // 가입
 
-$sql = " INSERT INTO `kkikda`.`js_test_manager` (`m_id`, `m_password`, `m_name`, `m_call`, `m_use`) 
+$sql = " INSERT INTO `yeosu_clean_gejang`.`js_test_manager` (`m_id`, `m_password`, `m_name`, `m_call`, `m_use`) 
 VALUES ('$m_id', '$m_password', '$m_name', '$m_call', '$m_use');";
 
 $result = mysqli_query($conn, $sql);
