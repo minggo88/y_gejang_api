@@ -22,7 +22,8 @@ $result = mysqli_query($conn, $sql);
 if ($result) {
     // 결과 반환
     echo json_encode([
-        "success" => true
+        "success" => true,
+		"sql" => $sql
     ]);
 	
 } else {
@@ -32,3 +33,5 @@ if ($result) {
 
 // 연결 종료
 mysqli_close($conn);
+
+?>
