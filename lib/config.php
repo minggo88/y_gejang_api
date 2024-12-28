@@ -23,6 +23,15 @@ if (!$conn) {
     exit;
 }
 
+// 함수 정의
+function loadParam($key, $default = null) {
+    return isset($_REQUEST[$key]) ? $_REQUEST[$key] : $default;
+}
+
+function setDefault($value, $default) {
+    return empty($value) ? $default : $value;
+}
+
 // 요청 데이터 가져오기
 $request = $_POST;
 ?>

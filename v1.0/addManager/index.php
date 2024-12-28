@@ -2,18 +2,6 @@
 // 공통 설정 포함
 include __DIR__ . "/../../lib/config.php";
 
-// 함수 정의
-function loadParam($key, $default = null) {
-    return isset($_REQUEST[$key]) ? $_REQUEST[$key] : $default;
-}
-
-function setDefault($value, $default) {
-    return empty($value) ? $default : $value;
-}
-
-// POST 데이터 가져오기
-$request = $_POST;
-
 // 파라미터 처리
 $m_id = mysqli_real_escape_string($conn, setDefault(loadParam('add_id'), ''));
 $m_password = mysqli_real_escape_string($conn, setDefault(loadParam('add_pw'), ''));

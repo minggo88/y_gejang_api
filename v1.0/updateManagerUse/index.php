@@ -2,14 +2,6 @@
 // 공통 설정 포함
 include __DIR__ . "/../../lib/config.php";
 
-// 파라미터 가져오기
-function loadParam($key, $default = null) {
-    return isset($_REQUEST[$key]) ? $_REQUEST[$key] : $default;
-}
-
-function setDefault($value, $default) {
-    return empty($value) ? $default : $value;
-}
 
 $m_index = setDefault(loadParam('up_index'), '');
 $m_use = setDefault(loadParam('up_use'), '');
