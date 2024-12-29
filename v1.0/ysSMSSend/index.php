@@ -49,8 +49,8 @@ function sendSMS($to, $message) {
 }
 
 
-$call = checkEmpty(loadParam('call'),'01039275103'); // 번호
-$message = checkEmpty(loadParam('message'),'한글메시지입니다'); // 문자내역
+$call = setDefault(loadParam('call'),'01039275103'); // 번호
+$message = setDefault(loadParam('message'),'한글메시지입니다'); // 문자내역
 
 // 문자 전송
 sendSMS($call, $message);
