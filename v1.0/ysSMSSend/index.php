@@ -4,6 +4,8 @@ include __DIR__ . "/../../lib/config.php";
 
 
 function sendSMS($to, $message) {
+	global $config;
+
 	$sql = "SELECT guest_key FROM js_config_sms WHERE CODE = 'aligo'; ";
 
 	$api_info = mysqli_query($conn, $sql);
