@@ -1,9 +1,8 @@
 <?php
-include dirname(__file__) . "/../../lib/TradeApi.php";
 
-// 로그인 세션 확인.
-//$tradeapi->checkLogin();
-//$userno = $tradeapi->get_login_userno();
+// 공통 설정 포함
+include __DIR__ . "/../../lib/config.php";
+
 $dataArray = setDefault(loadParam('dataArray'), '');
 $item = $dataArray['order_item'];
 
@@ -41,6 +40,24 @@ $up_sql =
 			receive_name='$receive_name', receive_call='$receive_call', receive_address_num='$receive_address_num', send_date='$send_date', 
 			box_cnt='$box_count', receive_code='$receive_code', move='$move', send_message='$send_message' 
 		WHERE order_index='$order_index';";
-$t_data = $tradeapi->query_list_object($up_sql);
+// 쿼리 실행
+$result = mysqli_query($conn, $up_sql);
 
-$tradeapi->success($t_data);
+if ($result) {
+    // 성공 시 반환
+    echo json_encode([
+        "success" => true,
+        "sql" => $up_sql
+    ]);
+} else {
+    // 실패 시 반환
+    echo json_encode([
+        "success" => false,
+        "error" => mysqli_error($conn),
+        "sql" => $up_sql
+    ]);
+}
+
+// 연결 종료
+mysqli_close($conn);
+?>
