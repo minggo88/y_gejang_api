@@ -1,6 +1,6 @@
 <?php
-include dirname(__file__) . "/../../lib/TradeApi.php";
-$exchangeapi->token = session_create_id();
+// 공통 설정 포함
+include __DIR__ . "/../../lib/config.php";
 
 function sendSMS($to, $message) {
 	// 한국 전화번호를 +82 형식으로 변환
@@ -42,19 +42,8 @@ function sendSMS($to, $message) {
 	curl_close($ch);
 }
 
-// if($_SERVER['REMOTE_ADDR']!='61.74.240.65') {$exchangeapi->error('001','시스템 정검중입니다.');}
-$tradeapi->set_db_link('slave');
-
-// -------------------------------------------------------------------- //
 
 
-// 거래소 api는 토큰을 전달 받을때만 작동하도록 되어 있어서 로그인시 token을 생성해 줍니다.
-// $exchangeapi->token = session_create_id();
-session_start();
-session_regenerate_id(); // 로그인할때마다 token 값을 바꿉니다.
-
-// 로그인 세션 확인.
-// $exchangeapi->checkLogout();
 
 $c_index = setDefault(loadParam('c_index'), '');
 $c_name = setDefault(loadParam('c_name'), '');
@@ -72,19 +61,26 @@ $sql = " UPDATE `yeosu_clean_gejang`.`js_test_order`
 			SET `complete`='Y', 'complete_manager' = '1'
 			WHERE  `sms_index`='$c_index';";
 
-$u_data = $tradeapi->query_list_object($sql);
-/*
-$sql2 = " INSERT INTO `yeosu_clean_gejang`.`js_test_order` (`call`, `order_item`, `order_num`, `address`, `order_manager`) 
-			VALUES ('$c_call', '$c_order', $c_ordernum, '$c_address1', '1');
-		";
+// 쿼리 실행
+$result = mysqli_query($conn, $sql);
 
-$u2_data = $tradeapi->query_list_object($sql2);
-*/
 sendSMS($c_call, $c_sendtext);
 
+if ($result) {
+    // 성공 시 반환
+    echo json_encode([
+        "success" => true,
+        "sql" => $sql
+    ]);
+} else {
+    // 실패 시 반환
+    echo json_encode([
+        "success" => false,
+        "error" => mysqli_error($conn),
+        "sql" => $sql
+    ]);
+}
 
-$tradeapi->success($u_data);
-
-
-
+// 연결 종료
+mysqli_close($conn);
 ?>

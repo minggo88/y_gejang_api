@@ -1,5 +1,7 @@
 <?php
-include dirname(__file__) . "/../../lib/TradeApi.php";
+// 공통 설정 포함
+include __DIR__ . "/../../lib/config.php";
+
 
 function sendSMS($to, $message) {
 	global $tradeapi;
@@ -40,7 +42,10 @@ function sendSMS($to, $message) {
 
 	echo $ret;
 	$retArr = json_decode($ret);
-    $tradeapi->success($retArr);
+	echo json_encode([
+        "success" => true,
+        "payload" => $retArr
+    ]);
 	
 }
 
