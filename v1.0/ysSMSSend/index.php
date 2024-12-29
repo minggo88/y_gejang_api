@@ -9,7 +9,7 @@ function sendSMS($to, $message) {
 	$api_info = mysqli_query($conn, $sql);
 
 	if (!$api_info || empty($api_info->guest_key)) {
-        die("API 인증키를 가져오지 못했습니다.");
+        die("API 인증키를 가져오지 못했습니다.".$api_info);
     }
 	
 	$accountSid = $api_info->guest_key;
