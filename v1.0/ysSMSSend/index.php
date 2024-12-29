@@ -4,10 +4,9 @@ include __DIR__ . "/../../lib/config.php";
 
 
 function sendSMS($to, $message) {
-	global $tradeapi;
-
 	$sql = "SELECT guest_key FROM js_config_sms WHERE CODE = 'aligo'; ";
-    $api_info = $tradeapi->query_fetch_object($sql);
+
+	$api_info = mysqli_query($conn, $sql);
 
 	if (!$api_info || empty($api_info->guest_key)) {
         die("API 인증키를 가져오지 못했습니다.");
