@@ -5,12 +5,14 @@ include __DIR__ . "/../../lib/config.php";
 
 $c_index = setDefault(loadParam('c_index'), '');
 $c_state = setDefault(loadParam('c_state'), '');
+$c_manager = setDefault(loadParam('c_manager'), '');
+
 
 
 // 가입
 
 $sql = " UPDATE `yeosu_clean_gejang`.`js_test_sms`  
-			SET `complete`='$c_state'  
+			SET `complete`='$c_state', `complete_manager`='$c_manager' 
 			WHERE  `sms_index`='$c_index';";
 
 // 쿼리 실행
