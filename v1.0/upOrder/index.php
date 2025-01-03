@@ -43,7 +43,7 @@ $item_cnt5 = $dataArray[0]['item_cnt5'];*/
 $up_sql = 
     "UPDATE yeosu_clean_gejang.js_test_order
 		SET payment_type='$payment_type', payment='$payment', payment_name='$payment_name', 
-            order_item= '$item' LIMIT 1), item_cnt='$item_cnt', 
+            order_item= '$item', item_cnt='$item_cnt', 
             order_item2= '$item2', item_cnt2='$item_cnt2', 
             order_item3= '$item3', item_cnt3='$item_cnt3', 
             order_item4= '$item4', item_cnt4='$item_cnt4', 
