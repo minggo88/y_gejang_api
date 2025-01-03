@@ -11,7 +11,9 @@ $type_num = setDefault(loadParam('type_num'), '');
 $sql = " SELECT item_index, i_value 
 	FROM js_test_item 
 	WHERE 1=1 ";
-$sql .= " AND i_type = '$type_num' ";
+if($type_num>0){
+    $sql .= " AND i_type = '$type_num' ";
+}
 $sql .= " ORDER BY i_value ASC;";
 		
 	
