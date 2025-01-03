@@ -5,6 +5,10 @@ include __DIR__ . "/../../lib/config.php";
 
 $dataArray = setDefault(loadParam('dataArray'), '');
 $item = $dataArray['order_item'];
+$item2 = $dataArray['order_item2'];
+$item3 = $dataArray['order_item3'];
+$item4 = $dataArray['order_item4'];
+$item5 = $dataArray['order_item5'];
 
 
 $send_date= $dataArray['send_date'];
@@ -13,6 +17,10 @@ $payment_type= $dataArray['payment_type'];
 $payment= $dataArray['payment'];
 $payment_name= $dataArray['payment_name'];
 $item_cnt = $dataArray['item_cnt'];
+$item_cnt2 = $dataArray['item_cnt2'];
+$item_cnt3 = $dataArray['item_cnt3'];
+$item_cnt4 = $dataArray['item_cnt4'];
+$item_cnt5 = $dataArray['item_cnt5'];
 $box_count = $dataArray['box_cnt'];
 $receive_name = $dataArray['receive_name'];
 $receive_call = $dataArray['receive_call'];
@@ -35,8 +43,13 @@ $item_cnt5 = $dataArray[0]['item_cnt5'];*/
 //메인반출내용
 $up_sql = 
     "UPDATE yeosu_clean_gejang.js_test_order
-		SET payment_type='$payment_type', payment='$payment', payment_name='$payment_name', order_item= (SELECT item_index FROM js_test_item WHERE i_value LIKE '%$item%' LIMIT 1),
-			item_cnt='$item_cnt', send_call='$send_call', receive_address='$receive_address', 
+		SET payment_type='$payment_type', payment='$payment', payment_name='$payment_name', 
+            order_item= (SELECT item_index FROM js_test_item WHERE i_value LIKE '%$item%' LIMIT 1), item_cnt='$item_cnt', 
+            order_item2= (SELECT item_index FROM js_test_item WHERE i_value LIKE '%$item2%' LIMIT 1), item_cnt='$item_cnt2', 
+            order_item3= (SELECT item_index FROM js_test_item WHERE i_value LIKE '%$item3%' LIMIT 1), item_cnt='$item_cnt3', 
+            order_item4= (SELECT item_index FROM js_test_item WHERE i_value LIKE '%$item4%' LIMIT 1), item_cnt='$item_cnt4', 
+            order_item5= (SELECT item_index FROM js_test_item WHERE i_value LIKE '%$item5%' LIMIT 1), item_cnt='$item_cnt5', 
+            send_call='$send_call', receive_address='$receive_address', 
 			receive_name='$receive_name', receive_call='$receive_call', receive_address_num='$receive_address_num', send_date='$send_date', 
 			box_cnt='$box_count', receive_code='$receive_code', move='$move', send_message='$send_message' 
 		WHERE order_index='$order_index';";
