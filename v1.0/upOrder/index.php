@@ -4,12 +4,11 @@
 include __DIR__ . "/../../lib/config.php";
 
 $dataArray = setDefault(loadParam('dataArray'), '');
-$item = $dataArray['order_item'];
-$item2 = $dataArray['order_item2'];
-$item3 = $dataArray['order_item3'];
-$item4 = $dataArray['order_item4'];
-$item5 = $dataArray['order_item5'];
-
+$item = isset($dataArray['order_item']) ? $dataArray['order_item'] : '';
+$item2 = isset($dataArray['order_item2']) ? $dataArray['order_item2'] : '';
+$item3 = isset($dataArray['order_item3']) ? $dataArray['order_item3'] : '';
+$item4 = isset($dataArray['order_item4']) ? $dataArray['order_item4'] : '';
+$item5 = isset($dataArray['order_item5']) ? $dataArray['order_item5'] : '';
 
 $send_date= $dataArray['send_date'];
 $send_call= $dataArray['send_call'];
