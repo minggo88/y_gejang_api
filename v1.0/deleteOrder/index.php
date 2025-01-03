@@ -3,14 +3,14 @@
 include __DIR__ . "/../../lib/config.php";
 
 
-$d_index = setDefault(loadParam('c_index'), '');
+$d_index = setDefault(loadParam('order_index'), '');
 
 
 
 // 가입
 
 $sql = " DELETE FROM `yeosu_clean_gejang`.`js_tjs_test_orderest_item` 
-			WHERE  `order_index`='$order_index';";
+			WHERE  `order_index`='$d_index';";
 
 
 
